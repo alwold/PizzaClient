@@ -1,3 +1,12 @@
-PODFILE CHECKSUM: 8badcef79d1c6660111c10fd6d8db4ebb762b79f
+PODS:
+  - Decodable (0.5)
+
+DEPENDENCIES:
+  - Decodable
+
+SPEC CHECKSUMS:
+  Decodable: 7c90acc68d357b71d0d6efc120faf9c53c644b7e
+
+PODFILE CHECKSUM: 93f9318edef2fe01c99bda1f3c88e45b83dc39f3
 
 COCOAPODS: 1.2.1
