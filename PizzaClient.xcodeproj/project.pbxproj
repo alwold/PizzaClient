@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68952E8D9366146989972A8A /* Pods_PizzaClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0324BAADBD8C0AB5EAD92B11 /* Pods_PizzaClient.framework */; };
 		88C928DD1F34333300154780 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C928DC1F34333300154780 /* AppDelegate.swift */; };
 		88C928DF1F34333300154780 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C928DE1F34333300154780 /* ViewController.swift */; };
 		88C928E21F34333300154780 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C928E01F34333300154780 /* Main.storyboard */; };
 		88C928E41F34333300154780 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88C928E31F34333300154780 /* Assets.xcassets */; };
 		88C928E71F34333300154780 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C928E51F34333300154780 /* LaunchScreen.storyboard */; };
+		88C928F01F3433BC00154780 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 88C928EF1F3433BC00154780 /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0324BAADBD8C0AB5EAD92B11 /* Pods_PizzaClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PizzaClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04C59DC2B9FC46059CE2967D /* Pods-PizzaClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-PizzaClient/Pods-PizzaClient.release.xcconfig"; sourceTree = "<group>"; };
+		3184D6F59C06E6DA787D3335 /* Pods-PizzaClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PizzaClient/Pods-PizzaClient.debug.xcconfig"; sourceTree = "<group>"; };
 		88C928D91F34333300154780 /* PizzaClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C928DC1F34333300154780 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88C928DE1F34333300154780 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,7 @@
 		88C928E31F34333300154780 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88C928E61F34333300154780 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88C928E81F34333300154780 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88C928EF1F3433BC00154780 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = Podfile; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68952E8D9366146989972A8A /* Pods_PizzaClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		410C54327B5447A60FF20C2B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3184D6F59C06E6DA787D3335 /* Pods-PizzaClient.debug.xcconfig */,
+				04C59DC2B9FC46059CE2967D /* Pods-PizzaClient.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		88C928D01F34333300154780 = {
 			isa = PBXGroup;
 			children = (
 				88C928DB1F34333300154780 /* PizzaClient */,
+				88C928EF1F3433BC00154780 /* Podfile */,
 				88C928DA1F34333300154780 /* Products */,
+				410C54327B5447A60FF20C2B /* Pods */,
+				DA604FB0C2FEAF0542D1AEE9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,6 +91,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		DA604FB0C2FEAF0542D1AEE9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0324BAADBD8C0AB5EAD92B11 /* Pods_PizzaClient.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -79,9 +106,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88C928EB1F34333300154780 /* Build configuration list for PBXNativeTarget "PizzaClient" */;
 			buildPhases = (
+				A4D8B05F83197FFC55964AE7 /* [CP] Check Pods Manifest.lock */,
 				88C928D51F34333300154780 /* Sources */,
 				88C928D61F34333300154780 /* Frameworks */,
 				88C928D71F34333300154780 /* Resources */,
+				7D475544D3602C23B5530943 /* [CP] Embed Pods Frameworks */,
+				1EE8A611C094649D213844AD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -133,11 +163,60 @@
 			files = (
 				88C928E71F34333300154780 /* LaunchScreen.storyboard in Resources */,
 				88C928E41F34333300154780 /* Assets.xcassets in Resources */,
+				88C928F01F3433BC00154780 /* Podfile in Resources */,
 				88C928E21F34333300154780 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1EE8A611C094649D213844AD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PizzaClient/Pods-PizzaClient-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D475544D3602C23B5530943 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PizzaClient/Pods-PizzaClient-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4D8B05F83197FFC55964AE7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		88C928D51F34333300154780 /* Sources */ = {
@@ -268,6 +347,7 @@
 		};
 		88C928EC1F34333300154780 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3184D6F59C06E6DA787D3335 /* Pods-PizzaClient.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PizzaClient/Info.plist;
@@ -280,6 +360,7 @@
 		};
 		88C928ED1F34333300154780 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04C59DC2B9FC46059CE2967D /* Pods-PizzaClient.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PizzaClient/Info.plist;
