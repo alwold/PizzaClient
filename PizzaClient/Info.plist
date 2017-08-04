@@ -41,5 +41,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>baseURL</key>
+	<string>http://192.168.99.100:3000</string>
 </dict>
 </plist>

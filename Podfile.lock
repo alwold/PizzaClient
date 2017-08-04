@@ -1,12 +1,18 @@
 PODS:
+  - Alamofire (4.4.0)
   - Decodable (0.5)
+  - MBProgressHUD (1.0.0)
 
 DEPENDENCIES:
+  - Alamofire
   - Decodable
+  - MBProgressHUD
 
 SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   Decodable: 7c90acc68d357b71d0d6efc120faf9c53c644b7e
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
 
-PODFILE CHECKSUM: 93f9318edef2fe01c99bda1f3c88e45b83dc39f3
+PODFILE CHECKSUM: ccb897146e19f39b8d81f5c0d2da5427dd284a80
 
 COCOAPODS: 1.2.1

@@ -14,6 +14,9 @@
 		88C928E71F34333300154780 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C928E51F34333300154780 /* LaunchScreen.storyboard */; };
 		88C928F21F34345200154780 /* Pizza.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C928F11F34345200154780 /* Pizza.swift */; };
 		88C928F41F34350C00154780 /* Topping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C928F31F34350C00154780 /* Topping.swift */; };
+		88C928F71F3435FB00154780 /* PizzaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C928F61F3435FB00154780 /* PizzaListViewController.swift */; };
+		88C928F91F3436C400154780 /* ServiceURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C928F81F3436C400154780 /* ServiceURLs.swift */; };
+		88C928FC1F34385C00154780 /* WebServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C928FB1F34385C00154780 /* WebServiceClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		88C928E81F34333300154780 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88C928F11F34345200154780 /* Pizza.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pizza.swift; sourceTree = "<group>"; };
 		88C928F31F34350C00154780 /* Topping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topping.swift; sourceTree = "<group>"; };
+		88C928F61F3435FB00154780 /* PizzaListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PizzaListViewController.swift; sourceTree = "<group>"; };
+		88C928F81F3436C400154780 /* ServiceURLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceURLs.swift; sourceTree = "<group>"; };
+		88C928FB1F34385C00154780 /* WebServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,8 @@
 		88C928DB1F34333300154780 /* PizzaClient */ = {
 			isa = PBXGroup;
 			children = (
+				88C928FA1F34381400154780 /* Network */,
+				88C928F51F3435DC00154780 /* ViewControllers */,
 				88C928EE1F34335600154780 /* Models */,
 				88C928DC1F34333300154780 /* AppDelegate.swift */,
 				88C928E01F34333300154780 /* Main.storyboard */,
@@ -89,6 +97,23 @@
 				88C928F31F34350C00154780 /* Topping.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		88C928F51F3435DC00154780 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				88C928F61F3435FB00154780 /* PizzaListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		88C928FA1F34381400154780 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				88C928F81F3436C400154780 /* ServiceURLs.swift */,
+				88C928FB1F34385C00154780 /* WebServiceClient.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		DA604FB0C2FEAF0542D1AEE9 /* Frameworks */ = {
@@ -223,6 +248,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				88C928F41F34350C00154780 /* Topping.swift in Sources */,
+				88C928F91F3436C400154780 /* ServiceURLs.swift in Sources */,
+				88C928F71F3435FB00154780 /* PizzaListViewController.swift in Sources */,
+				88C928FC1F34385C00154780 /* WebServiceClient.swift in Sources */,
 				88C928DD1F34333300154780 /* AppDelegate.swift in Sources */,
 				88C928F21F34345200154780 /* Pizza.swift in Sources */,
 			);
