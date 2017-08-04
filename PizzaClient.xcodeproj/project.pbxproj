@@ -54,6 +54,7 @@
 		88C928DB1F34333300154780 /* PizzaClient */ = {
 			isa = PBXGroup;
 			children = (
+				88C928EE1F34335600154780 /* Models */,
 				88C928DC1F34333300154780 /* AppDelegate.swift */,
 				88C928DE1F34333300154780 /* ViewController.swift */,
 				88C928E01F34333300154780 /* Main.storyboard */,
@@ -62,6 +63,13 @@
 				88C928E81F34333300154780 /* Info.plist */,
 			);
 			path = PizzaClient;
+			sourceTree = "<group>";
+		};
+		88C928EE1F34335600154780 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
