@@ -209,21 +209,30 @@
             </objects>
             <point key="canvasLocation" x="2591.1999999999998" y="59.820089955022496"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Toppings-->
         <scene sceneID="jCw-ba-o14">
             <objects>
-                <tableViewController id="Ekc-Z1-fe4" sceneMemberID="viewController">
+                <tableViewController id="Ekc-Z1-fe4" customClass="ToppingListViewController" customModule="PizzaClient" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="laS-yH-Oh9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ob6-bI-5jw">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="toppingCell" textLabel="WHQ-BT-ziH" style="IBUITableViewCellStyleDefault" id="Ob6-bI-5jw">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ob6-bI-5jw" id="Lv0-7N-Lou">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WHQ-BT-ziH">
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -232,7 +241,7 @@
                             <outlet property="delegate" destination="Ekc-Z1-fe4" id="yRp-w2-zch"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Jhx-Bd-7Vn"/>
+                    <navigationItem key="navigationItem" title="Toppings" id="Jhx-Bd-7Vn"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RUi-V4-HxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

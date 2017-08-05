@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MBProgressHUD
 
-class PizzaListViewController: UITableViewController {
+class PizzaListViewController: UITableViewController, ErrorHandling {
     var pizzas = [Pizza]()
     
     override func viewDidLoad() {
@@ -33,9 +33,7 @@ class PizzaListViewController: UITableViewController {
             },
             failure: { error in
                 self.refreshControl?.endRefreshing()
-                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default))
-                self.present(alert, animated: false)
+                self.showError(error.localizedDescription)
             }
         )
     }
