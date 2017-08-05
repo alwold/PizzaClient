@@ -122,12 +122,51 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AIl-Rw-JBL">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AIl-Rw-JBL">
                                         <rect key="frame" x="16" y="216" width="343" height="317"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="317" id="3wT-fO-5hf"/>
                                         </constraints>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="toppingCell" id="v4c-1s-vDG" customClass="PizzaToppingTableViewCell" customModule="PizzaClient" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v4c-1s-vDG" id="P8g-Cz-l1N">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVB-0r-BTv">
+                                                            <rect key="frame" x="8" y="8" width="42" height="27.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ccc-4e-BCW">
+                                                            <rect key="frame" x="280" y="8" width="55" height="28"/>
+                                                            <state key="normal" title="Remove"/>
+                                                            <connections>
+                                                                <action selector="removeTapped:" destination="v4c-1s-vDG" eventType="touchUpInside" id="D0E-AO-cGY"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="Ccc-4e-BCW" firstAttribute="top" secondItem="P8g-Cz-l1N" secondAttribute="topMargin" id="0hj-jk-gyd"/>
+                                                        <constraint firstAttribute="leadingMargin" secondItem="WVB-0r-BTv" secondAttribute="leading" id="1B3-Sy-yUU"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="Ccc-4e-BCW" secondAttribute="bottom" id="SR4-Ac-nxC"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="WVB-0r-BTv" secondAttribute="bottom" id="dQc-3v-ewB"/>
+                                                        <constraint firstItem="WVB-0r-BTv" firstAttribute="top" secondItem="P8g-Cz-l1N" secondAttribute="topMargin" id="qT4-8j-gh4"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="Ccc-4e-BCW" secondAttribute="trailing" id="tDd-CH-YhG"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="label" destination="WVB-0r-BTv" id="osg-uS-tUr"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="DyW-pg-alU" id="qrd-Zw-gD3"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <constraints>

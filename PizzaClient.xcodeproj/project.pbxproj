@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		68952E8D9366146989972A8A /* Pods_PizzaClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0324BAADBD8C0AB5EAD92B11 /* Pods_PizzaClient.framework */; };
+		885768C51F366ACD0052C4FE /* PizzaToppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885768C41F366ACD0052C4FE /* PizzaToppingTableViewCell.swift */; };
+		885768C81F366C3A0052C4FE /* UITableView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885768C71F366C3A0052C4FE /* UITableView+AutoLayout.swift */; };
 		88C928DD1F34333300154780 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C928DC1F34333300154780 /* AppDelegate.swift */; };
 		88C928E21F34333300154780 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C928E01F34333300154780 /* Main.storyboard */; };
 		88C928E41F34333300154780 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88C928E31F34333300154780 /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 		0324BAADBD8C0AB5EAD92B11 /* Pods_PizzaClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PizzaClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C59DC2B9FC46059CE2967D /* Pods-PizzaClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-PizzaClient/Pods-PizzaClient.release.xcconfig"; sourceTree = "<group>"; };
 		3184D6F59C06E6DA787D3335 /* Pods-PizzaClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PizzaClient/Pods-PizzaClient.debug.xcconfig"; sourceTree = "<group>"; };
+		885768C41F366ACD0052C4FE /* PizzaToppingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PizzaToppingTableViewCell.swift; sourceTree = "<group>"; };
+		885768C71F366C3A0052C4FE /* UITableView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+AutoLayout.swift"; sourceTree = "<group>"; };
 		88C928D91F34333300154780 /* PizzaClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C928DC1F34333300154780 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88C928E11F34333300154780 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -59,6 +63,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		885768C31F366AA90052C4FE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				885768C41F366ACD0052C4FE /* PizzaToppingTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		885768C61F366C1F0052C4FE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				885768C71F366C3A0052C4FE /* UITableView+AutoLayout.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		88C928D01F34333300154780 = {
 			isa = PBXGroup;
 			children = (
@@ -80,14 +100,16 @@
 		88C928DB1F34333300154780 /* PizzaClient */ = {
 			isa = PBXGroup;
 			children = (
+				88C928DC1F34333300154780 /* AppDelegate.swift */,
+				88C928E31F34333300154780 /* Assets.xcassets */,
+				885768C61F366C1F0052C4FE /* Extensions */,
+				88C928E81F34333300154780 /* Info.plist */,
+				88C928E51F34333300154780 /* LaunchScreen.storyboard */,
+				88C928E01F34333300154780 /* Main.storyboard */,
+				88C928EE1F34335600154780 /* Models */,
 				88C928FA1F34381400154780 /* Network */,
 				88C928F51F3435DC00154780 /* ViewControllers */,
-				88C928EE1F34335600154780 /* Models */,
-				88C928DC1F34333300154780 /* AppDelegate.swift */,
-				88C928E01F34333300154780 /* Main.storyboard */,
-				88C928E31F34333300154780 /* Assets.xcassets */,
-				88C928E51F34333300154780 /* LaunchScreen.storyboard */,
-				88C928E81F34333300154780 /* Info.plist */,
+				885768C31F366AA90052C4FE /* Views */,
 			);
 			path = PizzaClient;
 			sourceTree = "<group>";
@@ -252,8 +274,10 @@
 			files = (
 				88C928F41F34350C00154780 /* Topping.swift in Sources */,
 				88C928FE1F362DF600154780 /* PizzaViewController.swift in Sources */,
+				885768C81F366C3A0052C4FE /* UITableView+AutoLayout.swift in Sources */,
 				88C928F91F3436C400154780 /* ServiceURLs.swift in Sources */,
 				88C928F71F3435FB00154780 /* PizzaListViewController.swift in Sources */,
+				885768C51F366ACD0052C4FE /* PizzaToppingTableViewCell.swift in Sources */,
 				88C928FC1F34385C00154780 /* WebServiceClient.swift in Sources */,
 				88C928DD1F34333300154780 /* AppDelegate.swift in Sources */,
 				88C928F21F34345200154780 /* Pizza.swift in Sources */,
