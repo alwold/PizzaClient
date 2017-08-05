@@ -17,6 +17,10 @@ class ToppingListViewController : UITableViewController, ErrorHandling {
         loadToppings()
     }
     
+    @IBAction func refreshRequested(_ sender: Any) {
+        loadToppings()
+    }
+    
     func loadToppings()  {
         WebServiceClient.shared.getToppings(
             success: { toppings in

@@ -242,6 +242,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Toppings" id="Jhx-Bd-7Vn"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="L1A-tE-2hU">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <attributedString key="attributedTitle"/>
+                        <connections>
+                            <action selector="refreshRequested:" destination="Ekc-Z1-fe4" eventType="valueChanged" id="b2u-uX-bpu"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RUi-V4-HxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
