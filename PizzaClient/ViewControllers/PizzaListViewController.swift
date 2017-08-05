@@ -15,19 +15,27 @@ class PizzaListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        refreshControl?.beginRefreshing()
+        loadPizzas()
+    }
+    
+    @IBAction func refreshRequested(_ sender: UIRefreshControl) {
         loadPizzas()
     }
     
     fileprivate func loadPizzas() {
-        let hud = MBProgressHUD.showAdded(to: self.view, animated: false)
         WebServiceClient.shared.getPizzas(
             success: { pizzas in
-                hud.hide(animated: false)
+                self.refreshControl?.endRefreshing()
                 self.pizzas = pizzas
                 self.tableView.reloadData()
             },
             failure: { error in
-                hud.hide(animated: false)
+                self.refreshControl?.endRefreshing()
+                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                self.present(alert, animated: false)
             }
         )
     }

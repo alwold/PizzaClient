@@ -49,6 +49,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Pizzas" id="5c0-cC-Gja"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Zrp-0D-qc6">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refreshRequested:" destination="Zoa-vy-xSB" eventType="valueChanged" id="osL-5N-Esh"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyZ-YL-WU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
