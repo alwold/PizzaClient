@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MBProgressHUD
 
-class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandling {
+class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandling, AddPizzaToppingsDelegate {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -76,6 +76,16 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let pizzaToppingsViewController = segue.destination as? PizzaToppingsViewController {
             pizzaToppingsViewController.availableToppings = availableToppings
+            pizzaToppingsViewController.delegate = self
         }
+    }
+    
+    func add(toppings newToppings: [Topping]) {
+        for newTopping in newToppings {
+            toppings.append(PizzaTopping(id: -1, pizzaId: pizza.id, toppingId: newTopping.id, name: newTopping.name))
+        }
+        toppingsTableView.reloadData()
+        // adjust the layout to accomodate the new table view size
+        view.setNeedsLayout()
     }
 }

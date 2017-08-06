@@ -8,15 +8,30 @@
 
 import UIKit
 
-class PizzaToppingsViewController: UITableViewController {
+protocol AddPizzaToppingsDelegate: class {
+    func add(toppings: [Topping])
+}
+
+class PizzaToppingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var availableToppings: [Topping]!
     var selectedRows = [Int]()
+    weak var delegate: AddPizzaToppingsDelegate?
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    @IBOutlet weak var tableView: UITableView!
+    
+    var selectedToppings: [Topping] {
+        var toppings = [Topping]()
+        for selectedRow in selectedRows {
+            toppings.append(availableToppings[selectedRow])
+        }
+        return toppings
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return availableToppings.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "toppingCell", for: indexPath)
         cell.textLabel?.text = availableToppings[indexPath.row].name
         if selectedRows.contains(indexPath.row) {
@@ -27,7 +42,7 @@ class PizzaToppingsViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let index = selectedRows.index(of: indexPath.row) {
             selectedRows.remove(at: index)
         } else {
@@ -36,4 +51,13 @@ class PizzaToppingsViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    @IBAction func cancelTapped(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
+    @IBAction func addTapped(_ sender: Any) {
+        dismiss(animated: true) {
+            self.delegate?.add(toppings: self.selectedToppings)
+        }
+    }
 }
