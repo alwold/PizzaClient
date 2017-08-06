@@ -32,7 +32,7 @@ class WebServiceClient {
     
     func getToppings(success: @escaping ([Topping]) -> Void, failure: @escaping (Error) -> Void) {
         getJSON(
-            from: ServiceURLs.shared.pizzasUrl,
+            from: ServiceURLs.shared.toppingsUrl,
             success: { json in
                 do {
                     try success([Topping].decode(json))
@@ -43,9 +43,38 @@ class WebServiceClient {
             failure: failure
         )
     }
+    
+    func addTopping(toppingName: String, success: @escaping (Topping) -> Void, failure: @escaping (Error) -> Void) {
+        let parameters = [
+            "topping": [
+                "name": toppingName
+            ]
+        ]
+        Alamofire.request(
+            ServiceURLs.shared.toppingsUrl,
+            method: .post,
+            parameters: parameters,
+            encoding: JSONEncoding.default,
+            headers: nil)
+            .responseJSON { response in
+                if let error = response.result.error {
+                    failure(error)
+                } else if let json = response.result.value {
+                    do {
+                        try success(Topping.decode(json))
+                    } catch {
+                        failure(error)
+                    }
+                } else {
+                    failure(NoJsonError.noJson)
+                }
+
+        }
+        
+    }
 
     fileprivate func getJSON(from url: String, success: @escaping (Any) -> Void, failure: @escaping (Error) -> Void) {
-        Alamofire.request(ServiceURLs.shared.pizzasUrl).responseJSON { response in
+        Alamofire.request(url).responseJSON { response in
             if let error = response.result.error {
                 failure(error)
             } else if let json = response.result.value {

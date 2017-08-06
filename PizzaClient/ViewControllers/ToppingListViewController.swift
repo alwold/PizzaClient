@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class ToppingListViewController : UITableViewController, ErrorHandling {
     var toppings = [Topping]()
@@ -33,6 +34,33 @@ class ToppingListViewController : UITableViewController, ErrorHandling {
                 self.showError(error.localizedDescription)
             }
         )
+    }
+
+    @IBAction func addTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Add Topping", message: "Please enter a name for the new topping:", preferredStyle: .alert)
+        alert.addTextField()
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { action in
+            let hud = MBProgressHUD.showAdded(to: self.tabBarController!.view, animated: true)
+            hud.label.text = "Adding topping"
+            if let name = alert.textFields?.first?.text {
+                WebServiceClient.shared.addTopping(
+                    toppingName: name,
+                    success: { topping in
+                        hud.hide(animated: true)
+                        self.toppings.append(topping)
+                        self.tableView.reloadData()
+                    },
+                    failure: { error in
+                        hud.hide(animated: true)
+                        self.showError(error.localizedDescription)
+                    }
+                )
+            } else {
+                self.showError("Please enter a name for the topping.")
+            }
+        }))
+        present(alert, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
