@@ -12,6 +12,8 @@ import MBProgressHUD
 
 class PizzaListViewController: UITableViewController, ErrorHandling {
     var pizzas = [Pizza]()
+    var selectedPizza: Pizza?
+    var selectedPizzaToppings: [PizzaTopping]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,13 @@ class PizzaListViewController: UITableViewController, ErrorHandling {
             }
         )
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let pizzaViewController = segue.destination as? PizzaViewController {
+            pizzaViewController.pizza = selectedPizza
+            pizzaViewController.toppings = selectedPizzaToppings
+        }
+    }
 }
 
 extension PizzaListViewController {
@@ -56,5 +65,19 @@ extension PizzaListViewController {
         cell.detailTextLabel?.text = pizza.description
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedPizza = pizzas[indexPath.row]
+        WebServiceClient.shared.getPizzaToppings(
+            pizzaId: selectedPizza!.id,
+            success: { toppings in
+                self.selectedPizzaToppings = toppings
+                self.performSegue(withIdentifier: "pizzaSelected", sender: nil)
+            },
+            failure: { error in
+                self.showError(error.localizedDescription)
+            }
+        )
     }
 }

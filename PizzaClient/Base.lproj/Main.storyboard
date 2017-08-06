@@ -42,9 +42,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="DyW-pg-alU" kind="show" id="Ewc-sV-vQm"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -60,6 +57,9 @@
                             <action selector="refreshRequested:" destination="Zoa-vy-xSB" eventType="valueChanged" id="osL-5N-Esh"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <segue destination="DyW-pg-alU" kind="show" identifier="pizzaSelected" id="Zdi-Md-KIn"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyZ-YL-WU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -200,8 +200,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="descriptionTextView" destination="cf7-z6-YeD" id="tpp-1P-Zea"/>
+                        <outlet property="nameTextField" destination="DlZ-8v-qbp" id="UKE-7w-lp4"/>
                         <outlet property="scrollView" destination="o5W-GZ-vcD" id="LRX-YF-OBK"/>
-                        <outlet property="textView" destination="cf7-z6-YeD" id="ebT-bX-WJ8"/>
                         <outlet property="toppingsTableView" destination="AIl-Rw-JBL" id="hSv-ST-2ec"/>
                     </connections>
                 </viewController>

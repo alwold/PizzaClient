@@ -44,6 +44,20 @@ class WebServiceClient {
         )
     }
     
+    func getPizzaToppings(pizzaId: Int, success: @escaping ([PizzaTopping]) -> Void, failure: @escaping (Error) -> Void) {
+        getJSON(
+            from: String(format: ServiceURLs.shared.pizzaToppingsUrl, pizzaId),
+            success: { json in
+                do {
+                    try success([PizzaTopping].decode(json))
+                } catch {
+                    failure(error)
+                }
+            },
+            failure: failure
+        )
+    }
+    
     func addTopping(toppingName: String, success: @escaping (Topping) -> Void, failure: @escaping (Error) -> Void) {
         let parameters = [
             "topping": [
