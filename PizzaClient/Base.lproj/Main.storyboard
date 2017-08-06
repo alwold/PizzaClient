@@ -123,10 +123,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AIl-Rw-JBL">
-                                        <rect key="frame" x="16" y="216" width="343" height="317"/>
+                                        <rect key="frame" x="16" y="216" width="343" height="150"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="317" id="3wT-fO-5hf"/>
+                                            <constraint firstAttribute="height" constant="150" id="3wT-fO-5hf"/>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="toppingCell" id="v4c-1s-vDG" customClass="PizzaToppingTableViewCell" customModule="PizzaClient" customModuleProvider="target">
@@ -142,21 +142,11 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ccc-4e-BCW">
-                                                            <rect key="frame" x="280" y="8" width="55" height="28"/>
-                                                            <state key="normal" title="Remove"/>
-                                                            <connections>
-                                                                <action selector="removeTapped:" destination="v4c-1s-vDG" eventType="touchUpInside" id="D0E-AO-cGY"/>
-                                                            </connections>
-                                                        </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="Ccc-4e-BCW" firstAttribute="top" secondItem="P8g-Cz-l1N" secondAttribute="topMargin" id="0hj-jk-gyd"/>
                                                         <constraint firstAttribute="leadingMargin" secondItem="WVB-0r-BTv" secondAttribute="leading" id="1B3-Sy-yUU"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="Ccc-4e-BCW" secondAttribute="bottom" id="SR4-Ac-nxC"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="WVB-0r-BTv" secondAttribute="bottom" id="dQc-3v-ewB"/>
                                                         <constraint firstItem="WVB-0r-BTv" firstAttribute="top" secondItem="P8g-Cz-l1N" secondAttribute="topMargin" id="qT4-8j-gh4"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="Ccc-4e-BCW" secondAttribute="trailing" id="tDd-CH-YhG"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -168,12 +158,21 @@
                                             <outlet property="dataSource" destination="DyW-pg-alU" id="qrd-Zw-gD3"/>
                                         </connections>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aS6-d8-euz">
+                                        <rect key="frame" x="137.5" y="374" width="99" height="30"/>
+                                        <state key="normal" title="Add a Topping"/>
+                                        <connections>
+                                            <action selector="addToppingTapped:" destination="DyW-pg-alU" eventType="touchUpInside" id="Udu-X7-deC"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="cf7-z6-YeD" firstAttribute="trailing" secondItem="DlZ-8v-qbp" secondAttribute="trailing" id="3oe-ue-MT5"/>
+                                    <constraint firstItem="aS6-d8-euz" firstAttribute="top" secondItem="AIl-Rw-JBL" secondAttribute="bottom" constant="8" symbolic="YES" id="42W-9J-bYv"/>
                                     <constraint firstItem="aTc-Y9-Tbd" firstAttribute="leading" secondItem="9k1-B1-Mx3" secondAttribute="leading" id="5QM-Dn-CCb"/>
                                     <constraint firstItem="AIl-Rw-JBL" firstAttribute="leading" secondItem="cf7-z6-YeD" secondAttribute="leading" id="AKi-Cj-jJj"/>
                                     <constraint firstItem="9k1-B1-Mx3" firstAttribute="top" secondItem="o5W-GZ-vcD" secondAttribute="topMargin" id="Htx-AK-7x4"/>
+                                    <constraint firstItem="aS6-d8-euz" firstAttribute="centerX" secondItem="o5W-GZ-vcD" secondAttribute="centerX" id="Obl-Sw-2n3"/>
                                     <constraint firstItem="aTc-Y9-Tbd" firstAttribute="top" secondItem="DlZ-8v-qbp" secondAttribute="bottom" constant="8" symbolic="YES" id="Q73-JZ-GlG"/>
                                     <constraint firstItem="AIl-Rw-JBL" firstAttribute="top" secondItem="8ei-mp-r4O" secondAttribute="bottom" constant="8" symbolic="YES" id="W18-JY-UFC"/>
                                     <constraint firstItem="DlZ-8v-qbp" firstAttribute="leading" secondItem="o5W-GZ-vcD" secondAttribute="leading" constant="16" id="bOt-Sf-bMV"/>
@@ -181,10 +180,10 @@
                                     <constraint firstItem="cf7-z6-YeD" firstAttribute="top" secondItem="aTc-Y9-Tbd" secondAttribute="bottom" constant="8" symbolic="YES" id="ciL-7H-eW5"/>
                                     <constraint firstItem="9k1-B1-Mx3" firstAttribute="leading" secondItem="o5W-GZ-vcD" secondAttribute="leadingMargin" id="kIV-v1-AJo"/>
                                     <constraint firstItem="AIl-Rw-JBL" firstAttribute="trailing" secondItem="cf7-z6-YeD" secondAttribute="trailing" id="lBP-lG-rac"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="AIl-Rw-JBL" secondAttribute="bottom" id="lIG-IQ-smk"/>
                                     <constraint firstItem="DlZ-8v-qbp" firstAttribute="top" secondItem="9k1-B1-Mx3" secondAttribute="bottom" constant="8" symbolic="YES" id="lWw-6X-fwX"/>
                                     <constraint firstItem="8ei-mp-r4O" firstAttribute="leading" secondItem="aTc-Y9-Tbd" secondAttribute="leading" id="lly-Nw-GF4"/>
                                     <constraint firstAttribute="trailing" secondItem="DlZ-8v-qbp" secondAttribute="trailing" id="pcc-mS-uy0"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="aS6-d8-euz" secondAttribute="bottom" id="ppT-NZ-qD0"/>
                                     <constraint firstItem="cf7-z6-YeD" firstAttribute="leading" secondItem="DlZ-8v-qbp" secondAttribute="leading" id="rtm-1g-Hha"/>
                                 </constraints>
                             </scrollView>
@@ -204,11 +203,49 @@
                         <outlet property="nameTextField" destination="DlZ-8v-qbp" id="UKE-7w-lp4"/>
                         <outlet property="scrollView" destination="o5W-GZ-vcD" id="LRX-YF-OBK"/>
                         <outlet property="toppingsTableView" destination="AIl-Rw-JBL" id="hSv-ST-2ec"/>
+                        <segue destination="pxl-kN-fAr" kind="presentation" identifier="addToppingSegue" id="H7A-yh-lir"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ulk-Bu-1qh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2591.1999999999998" y="59.820089955022496"/>
+        </scene>
+        <!--Pizza Toppings View Controller-->
+        <scene sceneID="Nr2-Kr-vET">
+            <objects>
+                <tableViewController id="pxl-kN-fAr" customClass="PizzaToppingsViewController" customModule="PizzaClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cCf-Ad-caa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="toppingCell" textLabel="aVX-7J-gA4" style="IBUITableViewCellStyleDefault" id="pN7-JA-5c6">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pN7-JA-5c6" id="vQI-Re-vbT">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aVX-7J-gA4">
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pxl-kN-fAr" id="ZxP-C8-NZw"/>
+                            <outlet property="delegate" destination="pxl-kN-fAr" id="6RI-y2-N5H"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z1h-q9-AEE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3334" y="57"/>
         </scene>
         <!--Toppings-->
         <scene sceneID="jCw-ba-o14">

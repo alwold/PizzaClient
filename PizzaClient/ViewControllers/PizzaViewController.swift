@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import MBProgressHUD
 
-class PizzaViewController : UIViewController, UITableViewDataSource {
+class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandling {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -18,6 +19,7 @@ class PizzaViewController : UIViewController, UITableViewDataSource {
     
     var pizza: Pizza!
     var toppings: [PizzaTopping]!
+    var availableToppings: [Topping]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +41,7 @@ class PizzaViewController : UIViewController, UITableViewDataSource {
         // resize the scroll view content to fit the new table size
         let tableViewBottomY = self.toppingsTableView.frame.origin.y + self.toppingsTableView.frame.size.height
         scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: tableViewBottomY + 10)
+        // TODO add enough space for the add button
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,7 +57,25 @@ class PizzaViewController : UIViewController, UITableViewDataSource {
         return cell
     }
     
-    func removeTapped() {
-        NSLog("remove")
+    @IBAction func addToppingTapped(_ sender: Any) {
+        let hud = MBProgressHUD.showAdded(to: self.tabBarController!.view, animated: true)
+        WebServiceClient.shared.getToppings(
+            success: { toppings in
+                hud.hide(animated: true)
+                // TODO remove existing from list
+                self.availableToppings = toppings
+                self.performSegue(withIdentifier: "addToppingSegue", sender: sender)
+            },
+            failure: { error in
+                hud.hide(animated: true)
+                self.showError(error.localizedDescription)
+            }
+        )
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let pizzaToppingsViewController = segue.destination as? PizzaToppingsViewController {
+            pizzaToppingsViewController.availableToppings = availableToppings
+        }
     }
 }
