@@ -101,14 +101,23 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
     }
     
     @IBAction func saveTapped(_ sender: Any) {
-        let hud = MBProgressHUD.showAdded(to: self.tabBarController!.view, animated: true)
-        if let pizza = pizza {
-            addNextTopping(pizza: pizza, hud: hud, errors: [])
+        if let name = nameTextField.text, let description = descriptionTextView.text, !name.isEmpty, !description.isEmpty {
+            let hud = MBProgressHUD.showAdded(to: self.tabBarController!.view, animated: true)
+            if let pizza = pizza {
+                addNextTopping(pizza: pizza, hud: hud, errors: [])
+            } else {
+                WebServiceClient.shared.addPizza(
+                    pizza: NewPizza(name: name, description: description),
+                    success: { pizza in
+                        self.addNextTopping(pizza: pizza, hud: hud, errors: [])
+                    },
+                    failure: { error in
+                        self.showError(error.localizedDescription)
+                    }
+                )
+            }
         } else {
-//            WebServiceClient.shared.addPizza()
-//            pizza = Pizza(id: nil, name: <#T##String#>, description: <#T##String#>)
-//            // TODO create the pizza, then call addNextTopping
-//            addNextTopping(pizza: pizza, hud: hud, errors: [])
+            showError("Please enter a name and description for the pizza")
         }
     }
     
@@ -128,6 +137,7 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
             hud.hide(animated: true)
             if errors.isEmpty {
                 self.navigationController?.popViewController(animated: true)
+                // TODO notify a delegate if pizza is added
             } else {
                 let alert = UIAlertController(title: "Errors adding toppings", message: errors.joined(separator: "\n"), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in

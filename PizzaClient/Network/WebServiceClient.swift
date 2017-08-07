@@ -122,6 +122,28 @@ class WebServiceClient {
                 
         }
     }
+    
+    func addPizza(pizza: NewPizza, success: @escaping (Pizza) -> Void, failure: @escaping (Error) -> Void) {
+        Alamofire.request(
+            ServiceURLs.shared.pizzasUrl,
+            method: .post,
+            parameters: pizza.encode(),
+            encoding: JSONEncoding.default,
+            headers: nil
+            ).responseJSON { response in
+                if let error = response.result.error {
+                    failure(error)
+                } else if let json = response.result.value {
+                    do {
+                        success(try Pizza.decode(json))
+                    } catch {
+                        failure(error)
+                    }
+                } else {
+                    failure(NoJsonError.noJson)
+                }
+        }
+    }
 
     fileprivate func getJSON(from url: String, success: @escaping (Any) -> Void, failure: @escaping (Error) -> Void) {
         Alamofire.request(url).responseJSON { response in
