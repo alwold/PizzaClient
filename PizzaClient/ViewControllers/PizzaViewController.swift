@@ -20,6 +20,7 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
     var pizza: Pizza!
     var toppings: [PizzaTopping]!
     var availableToppings: [Topping]?
+    var toppingsToAdd = [PizzaTopping]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,10 +83,43 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
     
     func add(toppings newToppings: [Topping]) {
         for newTopping in newToppings {
-            toppings.append(PizzaTopping(id: -1, pizzaId: pizza.id, toppingId: newTopping.id, name: newTopping.name))
+            let newPizzaTopping = PizzaTopping(id: nil, pizzaId: pizza.id, toppingId: newTopping.id, name: newTopping.name)
+            toppings.append(newPizzaTopping)
+            toppingsToAdd.append(newPizzaTopping)
         }
         toppingsTableView.reloadData()
         // adjust the layout to accomodate the new table view size
         view.setNeedsLayout()
+    }
+    
+    @IBAction func saveTapped(_ sender: Any) {
+        let hud = MBProgressHUD.showAdded(to: self.tabBarController!.view, animated: true)
+        addNextTopping(hud: hud, errors: [])
+    }
+    
+    fileprivate func addNextTopping(hud: MBProgressHUD, errors: [String]) {
+        if let topping = toppingsToAdd.popLast() {
+            WebServiceClient.shared.addToppingToPizza(
+                topping: topping,
+                success: { response in
+                    self.addNextTopping(hud: hud, errors: errors)
+                },
+                failure: { error in
+                    self.addNextTopping(hud: hud, errors: errors + [error.localizedDescription])
+                }
+            )
+        } else {
+            hud.hide(animated: true)
+            if errors.isEmpty {
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                let alert = UIAlertController(title: "Errors adding toppings", message: errors.joined(separator: "\n"), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                    self.navigationController?.popViewController(animated: true)
+
+                }))
+                present(alert, animated: true)
+            }
+        }
     }
 }

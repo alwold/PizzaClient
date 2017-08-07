@@ -10,7 +10,7 @@ import Foundation
 import Decodable
 
 struct PizzaTopping : Decodable {
-    let id: Int
+    let id: Int?
     let pizzaId: Int
     let toppingId: Int
     let name: String

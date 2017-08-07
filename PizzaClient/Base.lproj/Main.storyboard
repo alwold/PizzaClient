@@ -65,7 +65,7 @@
             </objects>
             <point key="canvasLocation" x="1692" y="63.418290854572717"/>
         </scene>
-        <!--Pizza View Controller-->
+        <!--Edit Pizza-->
         <scene sceneID="Fzo-s6-6Zq">
             <objects>
                 <viewController id="DyW-pg-alU" customClass="PizzaViewController" customModule="PizzaClient" customModuleProvider="target" sceneMemberID="viewController">
@@ -198,6 +198,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="DlZ-8v-qbp" secondAttribute="trailing" id="prM-ZF-tf4"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Edit Pizza" id="l8I-6b-lXz">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="ej4-ZP-Ncp">
+                            <connections>
+                                <action selector="saveTapped:" destination="DyW-pg-alU" id="v7w-i0-yVF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="descriptionTextView" destination="cf7-z6-YeD" id="tpp-1P-Zea"/>
                         <outlet property="nameTextField" destination="DlZ-8v-qbp" id="UKE-7w-lp4"/>
