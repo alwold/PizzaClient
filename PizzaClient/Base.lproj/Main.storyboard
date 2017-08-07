@@ -49,7 +49,13 @@
                             <outlet property="delegate" destination="Zoa-vy-xSB" id="0qd-OE-54g"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Pizzas" id="5c0-cC-Gja"/>
+                    <navigationItem key="navigationItem" title="Pizzas" id="5c0-cC-Gja">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="83z-jK-fV3">
+                            <connections>
+                                <segue destination="DyW-pg-alU" kind="show" identifier="addNewPizza" id="cDD-FT-jn9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Zrp-0D-qc6">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -399,4 +405,7 @@
             <point key="canvasLocation" x="-199.19999999999999" y="63.418290854572717"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Zdi-Md-KIn"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -9,7 +9,7 @@
 import Foundation
 import Decodable
 
-struct PizzaTopping : Decodable {
+struct PizzaTopping : Decodable, DisplayableTopping {
     let id: Int?
     let pizzaId: Int
     let toppingId: Int

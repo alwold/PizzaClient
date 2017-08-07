@@ -41,10 +41,12 @@ class PizzaListViewController: UITableViewController, ErrorHandling {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let pizzaViewController = segue.destination as? PizzaViewController {
+        if segue.identifier == "pizzaSelected", let pizzaViewController = segue.destination as? PizzaViewController {
             pizzaViewController.pizza = selectedPizza
-            pizzaViewController.toppings = selectedPizzaToppings
+            // TODO check force unwrap
+            pizzaViewController.toppings = selectedPizzaToppings!
         }
+
     }
 }
 

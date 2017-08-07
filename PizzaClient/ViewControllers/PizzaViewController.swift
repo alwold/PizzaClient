@@ -17,10 +17,16 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
     @IBOutlet weak var toppingsTableView: UITableView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var pizza: Pizza!
-    var toppings: [PizzaTopping]!
+    var pizza: Pizza?
+    var toppings = [PizzaTopping]()
     var availableToppings: [Topping]?
-    var toppingsToAdd = [PizzaTopping]()
+    var toppingsToAdd = [Topping]()
+    
+    var allToppings: [DisplayableTopping] {
+        get {
+            return toppings as [DisplayableTopping] + toppingsToAdd as [DisplayableTopping]
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +36,12 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.nameTextField.text = pizza.name
-        self.descriptionTextView.text = pizza.description
+        if let pizza = pizza {
+            self.nameTextField.text = pizza.name
+            self.descriptionTextView.text = pizza.description
+        } else {
+            self.navigationItem.title = "Add Pizza"
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -46,14 +56,14 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return toppings.count
+        return allToppings.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "toppingCell", for: indexPath) as? PizzaToppingTableViewCell else {
             fatalError("Internal error: incorrect class on topping table view cell")
         }
-        cell.label.text = toppings[indexPath.row].name
+        cell.label.text = allToppings[indexPath.row].name
         cell.toppingId = 1
         return cell
     }
@@ -83,9 +93,7 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
     
     func add(toppings newToppings: [Topping]) {
         for newTopping in newToppings {
-            let newPizzaTopping = PizzaTopping(id: nil, pizzaId: pizza.id, toppingId: newTopping.id, name: newTopping.name)
-            toppings.append(newPizzaTopping)
-            toppingsToAdd.append(newPizzaTopping)
+            toppingsToAdd.append(newTopping)
         }
         toppingsTableView.reloadData()
         // adjust the layout to accomodate the new table view size
@@ -94,18 +102,26 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
     
     @IBAction func saveTapped(_ sender: Any) {
         let hud = MBProgressHUD.showAdded(to: self.tabBarController!.view, animated: true)
-        addNextTopping(hud: hud, errors: [])
+        if let pizza = pizza {
+            addNextTopping(pizza: pizza, hud: hud, errors: [])
+        } else {
+//            WebServiceClient.shared.addPizza()
+//            pizza = Pizza(id: nil, name: <#T##String#>, description: <#T##String#>)
+//            // TODO create the pizza, then call addNextTopping
+//            addNextTopping(pizza: pizza, hud: hud, errors: [])
+        }
     }
     
-    fileprivate func addNextTopping(hud: MBProgressHUD, errors: [String]) {
+    fileprivate func addNextTopping(pizza: Pizza, hud: MBProgressHUD, errors: [String]) {
         if let topping = toppingsToAdd.popLast() {
+            let pizzaTopping = PizzaTopping(id: nil, pizzaId: pizza.id, toppingId: topping.id, name: topping.name)
             WebServiceClient.shared.addToppingToPizza(
-                topping: topping,
+                topping: pizzaTopping,
                 success: { response in
-                    self.addNextTopping(hud: hud, errors: errors)
+                    self.addNextTopping(pizza: pizza, hud: hud, errors: errors)
                 },
                 failure: { error in
-                    self.addNextTopping(hud: hud, errors: errors + [error.localizedDescription])
+                    self.addNextTopping(pizza: pizza, hud: hud, errors: errors + [error.localizedDescription])
                 }
             )
         } else {

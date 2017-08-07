@@ -9,7 +9,7 @@
 import Foundation
 import Decodable
 
-struct Topping: Decodable {
+struct Topping: Decodable, DisplayableTopping {
     let id: Int
     let name: String
     
