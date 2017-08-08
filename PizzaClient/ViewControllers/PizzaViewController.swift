@@ -16,6 +16,7 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var toppingsTableView: UITableView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var toppingsTableViewHeightConstraint: NSLayoutConstraint!
     
     var pizza: Pizza?
     var toppings = [PizzaTopping]()
@@ -46,15 +47,9 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        // resize the table to fit content
-        self.toppingsTableView.frame = CGRect(x: self.toppingsTableView.frame.origin.x, y: self.toppingsTableView.frame.origin.y, width: self.toppingsTableView.bounds.size.width, height: self.toppingsTableView.contentSize.height)
-        
-        // resize the scroll view content to fit the new table size
-        let tableViewBottomY = self.toppingsTableView.frame.origin.y + self.toppingsTableView.frame.size.height
-        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: tableViewBottomY + 10)
-        // TODO add enough space for the add button
+        toppingsTableViewHeightConstraint.constant = self.toppingsTableView.contentSize.height
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allToppings.count
     }
