@@ -95,8 +95,10 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
         WebServiceClient.shared.getToppings(
             success: { toppings in
                 hud.hide(animated: true)
-                // TODO remove existing from list
-                self.availableToppings = toppings
+                // remove any toppings already on the pizza from the available to add list
+                self.availableToppings = toppings.filter { topping in
+                    return !self.hasTopping(id: topping.id)
+                }
                 self.performSegue(withIdentifier: "addToppingSegue", sender: sender)
             },
             failure: { error in
@@ -104,6 +106,20 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
                 self.showError(error.localizedDescription)
             }
         )
+    }
+    
+    func hasTopping(id: Int) -> Bool {
+        for existingTopping in self.toppings {
+            if  id == existingTopping.toppingId {
+                return true
+            }
+        }
+        for existingTopping in self.toppingsToAdd {
+            if id == existingTopping.id {
+                return true
+            }
+        }
+        return false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
