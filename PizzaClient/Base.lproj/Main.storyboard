@@ -93,7 +93,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DlZ-8v-qbp">
-                                        <rect key="frame" x="16" y="37" width="343" height="30"/>
+                                        <rect key="frame" x="8" y="37" width="351" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -105,7 +105,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cf7-z6-YeD">
-                                        <rect key="frame" x="16" y="104" width="343" height="75"/>
+                                        <rect key="frame" x="8" y="104" width="351" height="75"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="fNe-nb-6q0"/>
@@ -129,17 +129,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AIl-Rw-JBL">
-                                        <rect key="frame" x="16" y="216" width="343" height="150"/>
+                                        <rect key="frame" x="8" y="216" width="351" height="150"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="3wT-fO-5hf"/>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="toppingCell" id="v4c-1s-vDG" customClass="PizzaToppingTableViewCell" customModule="PizzaClient" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                                <rect key="frame" x="0.0" y="28" width="351" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v4c-1s-vDG" id="P8g-Cz-l1N">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="351" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVB-0r-BTv">
@@ -181,7 +181,7 @@
                                     <constraint firstItem="aS6-d8-euz" firstAttribute="centerX" secondItem="o5W-GZ-vcD" secondAttribute="centerX" id="Obl-Sw-2n3"/>
                                     <constraint firstItem="aTc-Y9-Tbd" firstAttribute="top" secondItem="DlZ-8v-qbp" secondAttribute="bottom" constant="8" symbolic="YES" id="Q73-JZ-GlG"/>
                                     <constraint firstItem="AIl-Rw-JBL" firstAttribute="top" secondItem="8ei-mp-r4O" secondAttribute="bottom" constant="8" symbolic="YES" id="W18-JY-UFC"/>
-                                    <constraint firstItem="DlZ-8v-qbp" firstAttribute="leading" secondItem="o5W-GZ-vcD" secondAttribute="leading" constant="16" id="bOt-Sf-bMV"/>
+                                    <constraint firstItem="DlZ-8v-qbp" firstAttribute="leading" secondItem="o5W-GZ-vcD" secondAttribute="leadingMargin" id="bOt-Sf-bMV"/>
                                     <constraint firstItem="8ei-mp-r4O" firstAttribute="top" secondItem="cf7-z6-YeD" secondAttribute="bottom" constant="8" symbolic="YES" id="cZO-Kb-r7R"/>
                                     <constraint firstItem="cf7-z6-YeD" firstAttribute="top" secondItem="aTc-Y9-Tbd" secondAttribute="bottom" constant="8" symbolic="YES" id="ciL-7H-eW5"/>
                                     <constraint firstItem="9k1-B1-Mx3" firstAttribute="leading" secondItem="o5W-GZ-vcD" secondAttribute="leadingMargin" id="kIV-v1-AJo"/>
@@ -197,7 +197,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="o5W-GZ-vcD" secondAttribute="trailing" id="9tc-9G-H0t"/>
-                            <constraint firstItem="DlZ-8v-qbp" firstAttribute="leading" secondItem="9Rc-j4-NQ8" secondAttribute="leadingMargin" id="W1U-g8-WgR"/>
                             <constraint firstItem="o5W-GZ-vcD" firstAttribute="leading" secondItem="9Rc-j4-NQ8" secondAttribute="leading" id="eM7-5v-Jgy"/>
                             <constraint firstAttribute="bottom" secondItem="o5W-GZ-vcD" secondAttribute="bottom" id="hgn-vE-HPq"/>
                             <constraint firstAttribute="top" secondItem="o5W-GZ-vcD" secondAttribute="top" id="iej-hP-Tls"/>
