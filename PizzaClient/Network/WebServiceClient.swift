@@ -13,8 +13,16 @@ enum NoJsonError: Error {
     case noJson
 }
 
-enum AddToppingError: Error {
-    case addToppingError([String: [String]])
+struct AddToppingError: Error, LocalizedError {
+    let errorDescription: String?
+    
+    init(errors: [String: [String]]) {
+        var allErrors = [String]()
+        for error in errors {
+            allErrors.append(contentsOf: error.value)
+        }
+        self.errorDescription = allErrors.joined(separator: "\n")
+    }
 }
 
 class WebServiceClient {
@@ -110,7 +118,7 @@ class WebServiceClient {
                         if response.errors.isEmpty {
                             success(response)
                         } else {
-                            failure(AddToppingError.addToppingError(response.errors))
+                            failure(AddToppingError(errors: response.errors))
                         }
                     } catch {
                         failure(error)

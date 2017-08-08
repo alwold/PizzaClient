@@ -125,7 +125,8 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
                     self.addNextTopping(pizza: pizza, hud: hud, errors: errors)
                 },
                 failure: { error in
-                    self.addNextTopping(pizza: pizza, hud: hud, errors: errors + [error.localizedDescription])
+                    let newError = "\(topping.name): \(error.localizedDescription)"
+                    self.addNextTopping(pizza: pizza, hud: hud, errors: errors + [newError])
                 }
             )
         } else {
@@ -134,7 +135,7 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
                 self.navigationController?.popViewController(animated: true)
                 // TODO notify a delegate if pizza is added
             } else {
-                let alert = UIAlertController(title: "Errors adding toppings", message: errors.joined(separator: "\n"), preferredStyle: .alert)
+                let alert = UIAlertController(title: "Couldn't add toppings", message: errors.joined(separator: "\n"), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
                     self.navigationController?.popViewController(animated: true)
 
