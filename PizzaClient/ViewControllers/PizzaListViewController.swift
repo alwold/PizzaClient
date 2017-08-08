@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MBProgressHUD
 
-class PizzaListViewController: UITableViewController, ErrorHandling {
+class PizzaListViewController: UITableViewController, ErrorHandling, PizzaDelegate {
     var pizzas = [Pizza]()
     var selectedPizza: Pizza?
     var selectedPizzaToppings: [PizzaTopping]?
@@ -41,12 +41,26 @@ class PizzaListViewController: UITableViewController, ErrorHandling {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "pizzaSelected", let pizzaViewController = segue.destination as? PizzaViewController {
-            pizzaViewController.pizza = selectedPizza
-            // TODO check force unwrap
-            pizzaViewController.toppings = selectedPizzaToppings!
+        if let pizzaViewController = segue.destination as? PizzaViewController {
+            pizzaViewController.delegate = self
+
+            if segue.identifier == "pizzaSelected" {
+                pizzaViewController.pizza = selectedPizza
+                // TODO check force unwrap
+                pizzaViewController.toppings = selectedPizzaToppings!
+            }
         }
 
+    }
+    
+    func pizzaUpdated(pizza updatedPizza: Pizza) {
+        for pizza in pizzas {
+            if pizza.id == updatedPizza.id {
+                return
+            }
+        }
+        pizzas.append(updatedPizza)
+        self.tableView.reloadData()
     }
 }
 

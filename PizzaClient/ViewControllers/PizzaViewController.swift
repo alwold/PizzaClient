@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import MBProgressHUD
 
+protocol PizzaDelegate: class {
+    func pizzaUpdated(pizza: Pizza)
+}
+
 class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandling, AddPizzaToppingsDelegate {
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -24,6 +28,7 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
     var availableToppings: [Topping]?
     var toppingsToAdd = [Topping]()
     var hideNoToppingsLabelConstraint: NSLayoutConstraint?
+    weak var delegate: PizzaDelegate?
     
     var allToppings: [DisplayableTopping] {
         get {
@@ -156,12 +161,12 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
             hud.hide(animated: true)
             if errors.isEmpty {
                 self.navigationController?.popViewController(animated: true)
-                // TODO notify a delegate if pizza is added
+                self.delegate?.pizzaUpdated(pizza: pizza)
             } else {
                 let alert = UIAlertController(title: "Couldn't add toppings", message: errors.joined(separator: "\n"), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
                     self.navigationController?.popViewController(animated: true)
-
+                    self.delegate?.pizzaUpdated(pizza: pizza)
                 }))
                 present(alert, animated: true)
             }
