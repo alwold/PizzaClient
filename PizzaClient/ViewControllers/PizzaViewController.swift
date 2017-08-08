@@ -17,11 +17,13 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
     @IBOutlet weak var toppingsTableView: UITableView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var toppingsTableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var noToppingsLabel: UILabel!
     
     var pizza: Pizza?
     var toppings = [PizzaTopping]()
     var availableToppings: [Topping]?
     var toppingsToAdd = [Topping]()
+    var hideNoToppingsLabelConstraint: NSLayoutConstraint?
     
     var allToppings: [DisplayableTopping] {
         get {
@@ -29,10 +31,30 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
         }
     }
     
+    var hideNoToppingsLabel: Bool {
+        get {
+            return hideNoToppingsLabelConstraint?.isActive == true
+        }
+        set (hidden) {
+            if hidden {
+                if hideNoToppingsLabelConstraint == nil {
+                    hideNoToppingsLabelConstraint = noToppingsLabel.heightAnchor.constraint(equalToConstant: 0)
+                }
+                hideNoToppingsLabelConstraint?.isActive = true
+            } else {
+                hideNoToppingsLabelConstraint?.isActive = false
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionTextView.layer.borderColor = UIColor(white: 0.94, alpha: 1.0).cgColor
         toppingsTableView.enableAutoLayout()
+        
+        if !toppings.isEmpty {
+            hideNoToppingsLabel = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,6 +113,7 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
             toppingsToAdd.append(newTopping)
         }
         toppingsTableView.reloadData()
+        hideNoToppingsLabel = true
         // adjust the layout to accomodate the new table view size
         view.setNeedsLayout()
     }
