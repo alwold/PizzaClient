@@ -135,29 +135,22 @@
                                             <constraint firstAttribute="height" constant="150" id="3wT-fO-5hf"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="toppingCell" id="v4c-1s-vDG" customClass="PizzaToppingTableViewCell" customModule="PizzaClient" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="toppingCell" textLabel="S5X-a7-zde" style="IBUITableViewCellStyleDefault" id="v4c-1s-vDG">
                                                 <rect key="frame" x="0.0" y="28" width="351" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v4c-1s-vDG" id="P8g-Cz-l1N">
                                                     <rect key="frame" x="0.0" y="0.0" width="351" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVB-0r-BTv">
-                                                            <rect key="frame" x="8" y="8" width="42" height="27.5"/>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="S5X-a7-zde">
+                                                            <rect key="frame" x="15" y="0.0" width="321" height="43.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="leadingMargin" secondItem="WVB-0r-BTv" secondAttribute="leading" id="1B3-Sy-yUU"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="WVB-0r-BTv" secondAttribute="bottom" id="dQc-3v-ewB"/>
-                                                        <constraint firstItem="WVB-0r-BTv" firstAttribute="top" secondItem="P8g-Cz-l1N" secondAttribute="topMargin" id="qT4-8j-gh4"/>
-                                                    </constraints>
                                                 </tableViewCellContentView>
-                                                <connections>
-                                                    <outlet property="label" destination="WVB-0r-BTv" id="osg-uS-tUr"/>
-                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>

@@ -82,11 +82,8 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "toppingCell", for: indexPath) as? PizzaToppingTableViewCell else {
-            fatalError("Internal error: incorrect class on topping table view cell")
-        }
-        cell.label.text = allToppings[indexPath.row].name
-        cell.toppingId = 1
+        let cell = tableView.dequeueReusableCell(withIdentifier: "toppingCell", for: indexPath)
+        cell.textLabel?.text = allToppings[indexPath.row].name
         return cell
     }
     
