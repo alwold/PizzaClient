@@ -4,3 +4,6 @@ This implements an iOS client for the Pizza Server. It is written in Swift 3, us
 
 To connect to your instance of the Pizza Server, you will need to modify the `baseURL`
 property in your `Info.plist`.
+
+### Image Credit
+Icons made by Madebyoliver from www.flaticon.com
