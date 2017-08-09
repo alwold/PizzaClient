@@ -215,7 +215,6 @@
                         <outlet property="descriptionTextView" destination="cf7-z6-YeD" id="tpp-1P-Zea"/>
                         <outlet property="nameTextField" destination="DlZ-8v-qbp" id="UKE-7w-lp4"/>
                         <outlet property="noToppingsLabel" destination="FUT-jB-OGr" id="PtT-Pc-cTz"/>
-                        <outlet property="scrollView" destination="o5W-GZ-vcD" id="LRX-YF-OBK"/>
                         <outlet property="toppingsTableView" destination="AIl-Rw-JBL" id="hSv-ST-2ec"/>
                         <outlet property="toppingsTableViewHeightConstraint" destination="3wT-fO-5hf" id="bPk-Sk-p1K"/>
                         <segue destination="yby-x8-ys0" kind="presentation" identifier="addToppingSegue" id="8r9-9E-dB5"/>

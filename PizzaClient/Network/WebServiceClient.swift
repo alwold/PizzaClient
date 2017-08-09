@@ -94,9 +94,7 @@ class WebServiceClient {
                 } else {
                     failure(NoJsonError.noJson)
                 }
-
         }
-        
     }
     
     func addToppingToPizza(topping: PizzaTopping, success: @escaping (AddPizzaToppingResponse) -> Void, failure: @escaping (Error) -> Void) {
@@ -126,8 +124,6 @@ class WebServiceClient {
                 } else {
                     failure(NoJsonError.noJson)
                 }
-                
-                
         }
     }
     

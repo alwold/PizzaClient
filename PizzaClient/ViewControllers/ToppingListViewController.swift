@@ -18,10 +18,6 @@ class ToppingListViewController : UITableViewController, ErrorHandling {
         loadToppings()
     }
     
-    @IBAction func refreshRequested(_ sender: Any) {
-        loadToppings()
-    }
-    
     func loadToppings()  {
         WebServiceClient.shared.getToppings(
             success: { toppings in
@@ -34,6 +30,24 @@ class ToppingListViewController : UITableViewController, ErrorHandling {
                 self.showError(error.localizedDescription)
             }
         )
+    }
+    
+    
+    // MARK: - UITableViewDataSource
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return toppings.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "toppingCell", for: indexPath)
+        cell.textLabel?.text = toppings[indexPath.row].name
+        return cell
+    }
+
+    
+    // MARK: - IBActions
+    @IBAction func refreshRequested(_ sender: Any) {
+        loadToppings()
     }
 
     @IBAction func addTapped(_ sender: Any) {
@@ -61,15 +75,5 @@ class ToppingListViewController : UITableViewController, ErrorHandling {
             }
         }))
         present(alert, animated: true)
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return toppings.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "toppingCell", for: indexPath)
-        cell.textLabel?.text = toppings[indexPath.row].name
-        return cell
     }
 }

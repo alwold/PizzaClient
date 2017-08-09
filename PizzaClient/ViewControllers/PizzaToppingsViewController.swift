@@ -27,6 +27,8 @@ class PizzaToppingsViewController: UIViewController, UITableViewDataSource, UITa
         return toppings
     }
     
+    
+    // MARK: - UITableViewDataSource / UITableViewDelegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return availableToppings.count
     }
@@ -51,6 +53,8 @@ class PizzaToppingsViewController: UIViewController, UITableViewDataSource, UITa
         self.tableView.reloadData()
     }
     
+    
+    // MARK: - IBActions
     @IBAction func cancelTapped(_ sender: Any) {
         dismiss(animated: true)
     }

@@ -46,13 +46,15 @@ class PizzaListViewController: UITableViewController, ErrorHandling, PizzaDelega
 
             if segue.identifier == "pizzaSelected" {
                 pizzaViewController.pizza = selectedPizza
-                // TODO check force unwrap
+                // selectedPizzaToppings is set before calling the segue, so this unwrap should be safe
                 pizzaViewController.toppings = selectedPizzaToppings!
             }
         }
 
     }
     
+    
+    // MARK: - PizzaDelegate
     func pizzaUpdated(pizza updatedPizza: Pizza) {
         for pizza in pizzas {
             if pizza.id == updatedPizza.id {
@@ -62,9 +64,9 @@ class PizzaListViewController: UITableViewController, ErrorHandling, PizzaDelega
         pizzas.append(updatedPizza)
         self.tableView.reloadData()
     }
-}
-
-extension PizzaListViewController {
+    
+    
+    // MARK: - UITableViewDataSource / UITableViewDelegate
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

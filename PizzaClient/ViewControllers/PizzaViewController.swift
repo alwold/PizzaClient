@@ -19,7 +19,6 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var toppingsTableView: UITableView!
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var toppingsTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var noToppingsLabel: UILabel!
     
@@ -27,7 +26,9 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
     var toppings = [PizzaTopping]()
     var availableToppings: [Topping]?
     var toppingsToAdd = [Topping]()
+    
     var hideNoToppingsLabelConstraint: NSLayoutConstraint?
+    
     weak var delegate: PizzaDelegate?
     
     var allToppings: [DisplayableTopping] {
@@ -51,7 +52,9 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
             }
         }
     }
+
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionTextView.layer.borderColor = UIColor(white: 0.94, alpha: 1.0).cgColor
@@ -76,7 +79,16 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
         super.viewDidLayoutSubviews()
         toppingsTableViewHeightConstraint.constant = self.toppingsTableView.contentSize.height
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let pizzaToppingsViewController = segue.destination as? PizzaToppingsViewController {
+            pizzaToppingsViewController.availableToppings = availableToppings
+            pizzaToppingsViewController.delegate = self
+        }
+    }
+    
+    
+    // MARK: - UITableViewDataSource / UITableViewDelegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allToppings.count
     }
@@ -87,6 +99,8 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
         return cell
     }
     
+    
+    // MARK: - IBActions
     @IBAction func addToppingTapped(_ sender: Any) {
         let hud = MBProgressHUD.showAdded(to: self.tabBarController!.view, animated: true)
         WebServiceClient.shared.getToppings(
@@ -103,37 +117,6 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
                 self.showError(error.localizedDescription)
             }
         )
-    }
-    
-    func hasTopping(id: Int) -> Bool {
-        for existingTopping in self.toppings {
-            if  id == existingTopping.toppingId {
-                return true
-            }
-        }
-        for existingTopping in self.toppingsToAdd {
-            if id == existingTopping.id {
-                return true
-            }
-        }
-        return false
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let pizzaToppingsViewController = segue.destination as? PizzaToppingsViewController {
-            pizzaToppingsViewController.availableToppings = availableToppings
-            pizzaToppingsViewController.delegate = self
-        }
-    }
-    
-    func add(toppings newToppings: [Topping]) {
-        for newTopping in newToppings {
-            toppingsToAdd.append(newTopping)
-        }
-        toppingsTableView.reloadData()
-        hideNoToppingsLabel = true
-        // adjust the layout to accomodate the new table view size
-        view.setNeedsLayout()
     }
     
     @IBAction func saveTapped(_ sender: Any) {
@@ -155,6 +138,32 @@ class PizzaViewController : UIViewController, UITableViewDataSource, ErrorHandli
         } else {
             showError("Please enter a name and description for the pizza")
         }
+    }
+    
+    
+    // MARK: - Helpers
+    func hasTopping(id: Int) -> Bool {
+        for existingTopping in self.toppings {
+            if  id == existingTopping.toppingId {
+                return true
+            }
+        }
+        for existingTopping in self.toppingsToAdd {
+            if id == existingTopping.id {
+                return true
+            }
+        }
+        return false
+    }
+
+    func add(toppings newToppings: [Topping]) {
+        for newTopping in newToppings {
+            toppingsToAdd.append(newTopping)
+        }
+        toppingsTableView.reloadData()
+        hideNoToppingsLabel = true
+        // adjust the layout to accomodate the new table view size
+        view.setNeedsLayout()
     }
     
     fileprivate func addNextTopping(pizza: Pizza, hud: MBProgressHUD, errors: [String]) {
