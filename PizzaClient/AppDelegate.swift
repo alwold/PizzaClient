@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().barTintColor = .red
         UITabBar.appearance().tintColor = .white
         UITabBar.appearance().unselectedItemTintColor = UIColor(white: 0.9, alpha: 1.0)
+        UIButton.appearance().tintColor = .red
     }
 
 }

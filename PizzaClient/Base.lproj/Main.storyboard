@@ -357,7 +357,7 @@
         <scene sceneID="7WD-jt-mRt">
             <objects>
                 <navigationController id="mjg-dM-e14" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Toppings" id="0Q7-il-U5g"/>
+                    <tabBarItem key="tabBarItem" title="Toppings" image="tomato" id="0Q7-il-U5g"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JPG-gK-8sw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -374,7 +374,7 @@
         <scene sceneID="hip-9z-c00">
             <objects>
                 <navigationController id="2y4-ZV-7hx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Pizzas" id="Kk4-ak-Iev"/>
+                    <tabBarItem key="tabBarItem" title="Pizzas" image="pizza" id="Kk4-ak-Iev"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Sm-bN-DDd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -407,6 +407,10 @@
             <point key="canvasLocation" x="-199.19999999999999" y="63.418290854572717"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pizza" width="25" height="25"/>
+        <image name="tomato" width="25" height="25"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Zdi-Md-KIn"/>
     </inferredMetricsTieBreakers>
